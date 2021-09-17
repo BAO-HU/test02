@@ -1,0 +1,194 @@
+install.packages("ggplot2")
+table_u$縣市名稱
+library(xlsx)
+rio03 <- read.xlsx('work.xlsx', sheetIndex = 1, encoding = 'UTF-8')
+rio03
+library(readxl)
+rio03_1 <- read_excel('work.xlsx', 1)
+class(rio03_1)
+
+#summary()則給出每個欄位的「最大值」、「最小值」、「平均值」、「中位數」「第一四分位數」…等等。
+summary(rio03)  
+#無離缺值
+any(is.na(rio03)) 
+#各欄位名稱
+names(rio03)
+#筆欄位數
+dim(rio03)
+#str()列出資料內每個欄位的狀態
+str(rio03) 
+
+#縣市VS等級 知道各縣市各等級的廁所有多少 
+table_list_lv <- table(rio03$縣市名稱, rio03$等級)
+table_list_lv
+
+#縣市VS類型 知道各縣市各類型的廁所有多少 
+table_list_lv2 <- table(rio03$縣市名稱,rio03$公廁類型) 
+table_list_lv2
+
+#縣市VS類型 知道各縣市各類別的廁所有多少 
+table_list_lv3 <- table(rio03$縣市名稱,rio03$公廁類別) 
+table_list_lv3
+
+#table_u 抓資料1.2.5.6.7欄位資料 建置另一個表格
+table_u <- lapply(rio03[,c(1,2,5,6,7)],table)
+table_u
+
+# 哪一個類別廁所數量最少 
+table_u$公廁類別
+class_prop_table <- round(prop.table(table_u$公廁類別),4)*100
+#畫圖區 縣市
+dist_dr<- data.frame(table_u$公廁類別,class_prop_table)
+dist_dr<- dist_dr[,-3]
+names(dist_dr) <- c ("公廁類別","縣市名稱","比例")
+dist_dr
+
+library(ggplot2)
+ggplot(data = dist_dr,aes(x =公廁類別,y =縣市名稱))+
+  geom_bar(stat="identity")
+pic1 <- ggplot(data = dist_dr,aes(x=reorder(公廁類別,-縣市名稱),y=縣市名稱,fill=公廁類別))+
+  geom_bar(stat = "identity")+
+  labs(title = "縣市各類別廁所",x="公廁類別",y="各縣市總數")+
+  theme_bw()+
+  theme(plot.title = element_text(face = "bold",size = 14,colour = colors()[400],hjust = 0.5),
+        axis.title.x = element_text(face = "italic",size = 12,colour = colors()[450]),
+        axis.title.y = element_text(face="bold.italic",size=10,colour = colors()[500]),
+        axis.text.x = element_text(face = "bold",size = 8,colour = colors()[550],vjust = 0.5),
+        axis.text.y = element_text(size=8,colour = colors()[550]),
+        legend.position = "none")
+pic1
+
+#圖2
+class_prop_table <- round(prop.table(table_u$等級),4)*100
+
+#畫圖區 縣市
+dist_dr<- data.frame(table_u$等級,class_prop_table)
+dist_dr<- dist_dr[,-3]
+names(dist_dr) <- c ("等級","縣市名稱","比例")
+dist_dr
+
+library(ggplot2)
+ggplot(data = dist_dr,aes(x =等級,y =縣市名稱))+
+  geom_bar(stat="identity")
+pic2 <- ggplot(data = dist_dr,aes(x=reorder(等級,-縣市名稱),y=縣市名稱,fill=等級))+
+  geom_bar(stat = "identity")+
+  labs(title = "各縣市公廁等級數量",x="公廁等級",y="各等級公廁數量")+
+  theme_bw()+
+  theme(plot.title = element_text(face = "bold",size = 14,colour = colors()[400],hjust = 0.5),
+        axis.title.x = element_text(face = "italic",size = 12,colour = colors()[450]),
+        axis.title.y = element_text(face="bold.italic",size=10,colour = colors()[500]),
+        axis.text.x = element_text(face = "bold",size = 8,colour = colors()[550],vjust = 0.5),
+        axis.text.y = element_text(size=8,colour = colors()[550]),
+        legend.position = "none")
+pic2
+
+#圖3
+class_prop_table <- round(prop.table(table_u$公廁類別),4)*100
+table_u$公廁類別
+#畫圖區 縣市
+dist_dr<- data.frame(table_u$公廁類別,class_prop_table)
+dist_dr<- dist_dr[,-3]
+names(dist_dr) <- c ("公廁類別","公廁類型","比例")
+dist_dr
+
+library(ggplot2)
+ggplot(data = dist_dr,aes(x =公廁類別,y =公廁類型))+
+  geom_bar(stat="identity")
+pic3 <- ggplot(data = dist_dr,aes(x=reorder(公廁類別,-公廁類型),y=公廁類型,fill=公廁類別))+
+  geom_bar(stat = "identity")+
+  labs(title = "各類型公廁類別數量",x="公廁類別",y="公廁類型總數")+
+  theme_bw()+
+  theme(plot.title = element_text(face = "bold",size = 14,colour = colors()[400],hjust = 0.5),
+        axis.title.x = element_text(face = "italic",size = 12,colour = colors()[450]),
+        axis.title.y = element_text(face="bold.italic",size=10,colour = colors()[500]),
+        axis.text.x = element_text(face = "bold",size = 8,colour = colors()[550],vjust = 0.5),
+        axis.text.y = element_text(size=8,colour = colors()[550]),
+        legend.position = "none")
+pic3
+#圖4
+class_prop_table <- round(prop.table(table_u$等級),4)*100
+
+#畫圖區 縣市
+dist_dr<- data.frame(table_u$等級,class_prop_table)
+dist_dr<- dist_dr[,-3]
+names(dist_dr) <- c ("等級","公廁類型","比例")
+dist_dr
+
+library(ggplot2)
+ggplot(data = dist_dr,aes(x =等級,y =公廁類型))+
+  geom_bar(stat="identity")
+pic4 <- ggplot(data = dist_dr,aes(x=reorder(等級,-公廁類型),y=公廁類型,fill=等級))+
+  geom_bar(stat = "identity")+
+  labs(title = "公廁各類別廁所等級數量",x="公廁類別",y="各公廁類型總數")+
+  theme_bw()+
+  theme(plot.title = element_text(face = "bold",size = 14,colour = colors()[400],hjust = 0.5),
+        axis.title.x = element_text(face = "italic",size = 12,colour = colors()[450]),
+        axis.title.y = element_text(face="bold.italic",size=10,colour = colors()[500]),
+        axis.text.x = element_text(face = "bold",size = 8,colour = colors()[550],vjust = 0.5),
+        axis.text.y = element_text(size=8,colour = colors()[550]),
+        legend.position = "none")
+pic4
+
+
+#雙圖1
+
+table_D1<- c("宜蘭縣","花蓮縣","金門縣","南投縣","屏東縣","苗栗縣","桃園市","高雄市","基隆市","連江縣","雲林縣",
+             "新北市","新竹市","新竹縣","嘉義市","嘉義縣","彰化縣","臺中市","臺北市","臺東縣","臺南市","澎湖縣")
+table_D2 <- rio03[rio03$縣市名稱%in% table_D1, ]
+
+
+pic5 <- ggplot(table_D2,aes(公廁類別))+
+  geom_bar(aes(fill = 縣市名稱))+
+  labs(title = "縣市各類別廁所",x="公廁類型",y="各縣市數量",fill="縣市數量")+
+  theme(plot.title = element_text(face = "bold",size = 14,colour = colors()[400],hjust = 0.5),
+        axis.title.x = element_text(face = "italic",size = 12,colour = colors()[450]),
+        axis.title.y = element_text(face="bold.italic",size=10,colour = colors()[500]),
+        axis.text.x = element_text(face = "bold",size = 8,colour = colors()[5],vjust = 0.5),
+        axis.text.y = element_text(size=10,colour = colors()[600]))
+pic5
+#雙圖2
+table_D3<- c("特優級","優等級","普通級")
+table_D4 <- rio03[rio03$等級%in% table_D3, ]
+
+
+pic6 <- ggplot(table_D4,aes(縣市名稱))+
+  geom_bar(aes(fill = 等級))+
+  labs(title = "各縣市公廁等級數量",x="縣市名稱",y="各等級公廁數量",fill="等級")+
+  theme(plot.title = element_text(face = "bold",size = 14,colour = colors()[400],hjust = 0.5),
+        axis.title.x = element_text(face = "italic",size = 12,colour = colors()[450]),
+        axis.title.y = element_text(face="bold.italic",size=10,colour = colors()[500]),
+        axis.text.x = element_text(face = "bold",size = 8,colour = colors()[5],vjust = 0.5),
+        axis.text.y = element_text(size=10,colour = colors()[600]))
+pic6
+#雙圖3
+table_D5<- c("女廁所","男廁所","性別友善廁所","混合廁所","無障礙廁所","親子廁所")
+table_D6 <- rio03[rio03$公廁類別%in% table_D5, ]
+
+
+pic7 <- ggplot(table_D6,aes(公廁類型))+
+  geom_bar(aes(fill = 公廁類別))+
+  labs(title = "各類型公廁類別數量",x="公廁類型",y="公廁類別",fill="公廁類別")+
+  theme(plot.title = element_text(face = "bold",size = 14,colour = colors()[400],hjust = 0.5),
+        axis.title.x = element_text(face = "italic",size = 12,colour = colors()[450]),
+        axis.title.y = element_text(face="bold.italic",size=10,colour = colors()[500]),
+        axis.text.x = element_text(face = "bold",size = 8,colour = colors()[5],vjust = 0.5),
+        axis.text.y = element_text(size=10,colour = colors()[600]))
+pic7
+
+#雙圖4
+table_D7<- c("特優級","優等級","普通級",)
+table_D8 <- rio03[rio03$等級%in% table_D7, ]
+
+
+pic8 <- ggplot(table_D8,aes(公廁類別))+
+  geom_bar(aes(fill = 等級))+
+  labs(title = "公廁各類別廁所等級數量",x="公廁類別",y="各等級數量",fill="等級")+
+  theme(plot.title = element_text(face = "bold",size = 14,colour = colors()[400],hjust = 0.5),
+        axis.title.x = element_text(face = "italic",size = 12,colour = colors()[450]),
+        axis.title.y = element_text(face="bold.italic",size=10,colour = colors()[500]),
+        axis.text.x = element_text(face = "bold",size = 8,colour = colors()[5],vjust = 0.5),
+        axis.text.y = element_text(size=10,colour = colors()[600]))
+pic8
+
+
+
