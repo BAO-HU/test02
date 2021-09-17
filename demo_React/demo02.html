@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, inital-scale=1.0">
+
+
+</head>
+
+
+<body>
+    <button type="button" id="like">喜歡阿</button>
+
+    <script>
+        var likebtn = document.getElementById('like')
+
+        var state = {
+            like : false,
+            color : 'red'
+        }
+
+        var setState = function(newStateA){
+            state = {
+                ...state,
+                ...newStateA
+            }
+            render()
+        }
+
+
+        var render = function(){
+            if(state.like){
+                //喜歡的狀態
+                likebtn.innerHTML = '已讚'
+                likebtn.style.color = 'red'
+            }else{
+                //不喜歡的狀態
+                likebtn.innerHTML = '喜歡阿'
+                likebtn.style.color = 'black'
+            }
+        }
+
+
+        likebtn.addEventListener('click',function(){
+            setState({
+                like : !state.like
+            })
+        })
+        
+        
+
+    </script>
+
+
+
+
+
+
+</body>
+
+
+
+</html>

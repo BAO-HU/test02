@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--
+     更加接近React的開發模式
+
+     沒有html 純js完成應用開發
+-->
+
+<body>
+    <!---->
+    <div id = "root"></div>
+
+    <script>
+        var root = document.getElementById('root')
+
+        var state = {
+            like : false
+        }
+        
+        var setState = function(newState){
+            state = {
+                ...state,
+                ...newState
+            }
+            render()
+        }
+
+
+        var handleClick = function(){
+            setState({
+                like : !state.like
+            })
+        }
+
+        var render = function(){
+            root.innerHTML =
+            `
+            <button type ="button" style="color : ${state.like ? "red" : "black"};" onclick="handleClick()">
+                ${state.like ? "已讚" : "喜歡"}
+            </button>
+            
+            `
+
+        }
+
+        render()
+
+    </script>
+
+
+
+
+</body>
+
+
+
+
+
+</html>

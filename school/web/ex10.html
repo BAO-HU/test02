@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap網頁</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">    
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>	
+  </head>
+  <body> 
+    <div id="myCarousel" class="carousel slide">
+      <!-- 輪播指示 -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+
+      <!-- 輪播內容 -->
+      <div class="carousel-inner">
+		<div class="item active">
+  		  <img src="01.png">
+          <div class="carousel-caption">
+            <h1>我的英雄學院</h1>
+          </div>          
+        </div>
+		<div class="item">
+          <img src="02.png">
+          <div class="carousel-caption">
+            <h1>鬼滅之刃</h1>
+          </div>
+        </div>
+		<div class="item">
+          <img src="03.jpg">
+          <div class="carousel-caption">
+            <h1>一拳超人</h1>
+          </div>
+        </div>
+      </div>
+
+      <!-- 輪播控制 -->
+      <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span></a>
+      <a class="carousel-control right" href="#myCarousel" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span></a>
+    </div>
+    <div class="container">
+      <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse1">我的英雄學院</a></h4>
+          </div>
+          <div id="collapse1" class="panel-collapse collapse in">
+            <div class="panel-body">
+		      <p>故事圍繞在主人翁綠谷出久身上，他最初是個沒有個性的少年，但他仍憧憬並渴望成為一位英雄，也期望自己能進入培育英雄的菁英學校雄英高校就讀。但周圍的人都不看好沒有個性的他能成為能力者，讓他總是在他人的嘲笑與輕視中度過。直到他遇上了自己最仰慕的英雄，被人稱為「和平的象徵」的歐爾麥特，他的夢想將因此獲得會化為現實的可能性。出久在經過歐爾麥特的十個月特訓後，獲得歐爾麥特的個性「One・for・All」。之後，進入了雄英高校。</p>
+		    </div>  
+          </div>
+        </div>
+	
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse2">鬼滅之刃</a></h4>
+          </div>
+          <div id="collapse2" class="panel-collapse collapse">
+            <div class="panel-body">
+		      <p>以大正時代為故事舞台，講述了主角竈門炭治郎全家被鬼殺害，為了尋求唯一倖存但被鬼化的妹妹變回人的方法，踏上了斬鬼之旅所描寫的純和風劍戟奇譚。</p>
+		    </div>  
+          </div>
+        </div>
+	  
+	    <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse3">一拳超人</a></h4>
+          </div>
+          <div id="collapse3" class="panel-collapse collapse">
+            <div class="panel-body">
+		      <p>各種具有超自然力量的「怪人」不斷地出現並造成災害，為了打擊它們，由某富豪所創立的「英雄協會」開始招募全世界的能人異士成為職業英雄與怪人對抗。
+故事主角埼玉是一名興趣使然英雄，因為22歲時打敗了怪人『蟹爪蘭帝』並且拯救了小孩而燃起小時候想成為英雄的夢想，接下來持續三年的每一天不間斷地做100下伏地挺身、100下仰臥起坐、100下深蹲和長跑10公里以及和怪人戰鬥、不斷提升戰鬥力與身體機能，最終打破生物限制器的自我訓練而變的強大，在無人知曉的情況下從事英雄的工作。最終掉光所有毛髮成為了光頭，但也因此獲得最強的力量。
+埼玉成為了最強英雄後，卻因為力量太過強大，沒了當初訓練期間能打敗怪人那激昂的情緒並渴望遇見能與之一戰的強大對手。在一連串事件中，埼玉遇見了各式各樣的英雄和怪人，收了魔鬼生化人傑諾斯做為徒弟，並加入英雄協會以獲得官方認可。與眾多英雄一起開始了對抗各種怪人以及災難的生活。</p>
+		    </div>  
+          </div>
+        </div>
+    </div>
+        </div>
+  </body>
+</html>

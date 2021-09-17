@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, inital-scale=1.0">
+
+
+</head>
+
+
+
+<body>
+    <button type="button" id="like">喜歡阿</button>
+
+    <script>
+        var lilebtn = document.getElementById('like')
+
+        lilebtn.addEventListener('click', function () {
+            if (lilebtn.innerHTML == '已讚') {
+                lilebtn.innerHTML = '喜歡阿'
+                lilebtn.style.color = 'black'
+            } else {
+                lilebtn.innerHTML = '已讚'
+                lilebtn.style.color = 'red'
+            }
+        })
+
+    </script>
+
+
+
+
+
+
+</body>
+
+
+
+</html>

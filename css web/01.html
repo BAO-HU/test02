@@ -1,0 +1,47 @@
+<html>
+
+<style>
+    .center,.left,.right{
+        float: left;
+    }
+/* 在主左右區域將浮動靠左後 底部產生坍陷也跑上來 於是中間區域加入大標籤 清除浮動 */
+    .clearfix::after{
+        content: "";
+        display: block;
+        clear: both;
+    }
+ /* 設定顏色看得比較清楚 */
+    
+/* */
+    .wrapper{
+    padding:0 100px;
+}
+    .center{
+        background-color: chartreuse;
+        width: 100%;
+
+    }
+    .left{
+        background-color: coral;
+        margin-left: -100%;
+         width: 100px;
+        position: relative;
+    }
+    .right{
+        background-color: cyan;
+        width: 100px;
+        margin-left: -100px;
+
+        position: relative;
+    }
+</style>
+<boby>
+    <header>頭部</header>
+<div class="clearfix wrapper">
+    <div class="center">主區域</div>
+    <div class="left">左區域</div>
+    <div class="right">右區域</div>
+</div>
+    <footer>底部</footer>
+</boby>
+</html>

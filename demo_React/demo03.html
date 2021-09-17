@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, inital-scale=1.0">
+
+
+</head>
+
+
+<body>
+   
+        
+    <input type="text" id="input1">
+    <script>
+        var input = document.getElementById('input1')
+
+        var state = {
+            value : ""
+        }
+
+        var setState = function(newStateB) {
+            state = {
+                ...state,
+                ...newStateB
+            }
+            render()
+        }
+
+        var render = function(){
+            input.value = "state.value"
+        }
+
+        input.addEventListener('input',function(){
+            setState(
+            {
+                    value : this.value
+            }
+            )
+        })
+
+    </script>
+
+</body>
+
+
+
+</html>

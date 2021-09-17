@@ -1,0 +1,25 @@
+@charset "utf-8";
+.header {
+	
+}
+.content {
+	
+}
+
+
+.footer {
+	
+	clear: left;
+	text-align: center;
+}
+
+.contentR {
+	
+	border: thin dotted rgba(245,18,82,1.00);
+	
+}
+
+.contentL {
+	float: left;
+	
+}
